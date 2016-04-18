@@ -6,6 +6,14 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="js/main.js"></script>
+    <style type="text/css">
+      .extinct {
+        color: red;
+      }
+      .important {
+        font-variant: small-caps;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -24,7 +32,7 @@
 
         <article ng-repeat="animal in ac.all">
           <!-- ac.all.forEach(function(animal) { ... }) -->
-          <h3>
+          <h3 ng-class="{extinct: animal.type === 'Dinosaur', important: animal.species.length > 5}">
             {{animal.species}}
             <small>{{animal.type}}</small>
           </h3>
