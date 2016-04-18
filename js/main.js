@@ -23,7 +23,7 @@
      this.all = [
        { species: "Buffalo", type: "Mammal", picture: "https://upload.wikimedia.org/wikipedia/commons/8/8d/American_bison_k5680-1.jpg" },
        { species: "Penguin", type: "Bird", picture: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_%28Pygoscelis_antarctica%29_04.jpg/800px-South_Shetland-2016-Deception_Island%E2%80%93Chinstrap_penguin_%28Pygoscelis_antarctica%29_04.jpg" },
-       { species: "Platypus", type: "???", picture: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Wild_Platypus_4.jpg" },
+       { species: "Platypus", type: "Marsupial", picture: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Wild_Platypus_4.jpg" },
        { species: "Ostrich", type: "Bird", picture: "" },
        { species: "T-Rex", type: "Dinosaur", picture: "" },
        { species: "Bear", type: "Mammal", picture: "" },
@@ -31,6 +31,16 @@
        { species: "Velociraptor", type: "Dinosaur", picture: "" }
      ];
 
-     this.types = ["Mammal", "Bird", "???"]
+     this.previewLimit = 4;
+
+     this.types = function animalTypes() {
+       var uniqueTypes = [];
+       this.all.forEach(function(animal) {
+         if (uniqueTypes.indexOf(animal.type) === -1) {
+           uniqueTypes.push(animal.type);
+         }
+       })
+       return uniqueTypes;
+     };
    }
 })();

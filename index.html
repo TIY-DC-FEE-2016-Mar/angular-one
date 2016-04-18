@@ -24,13 +24,14 @@
 
       <main ng-controller="AnimalsController as ac">
         <!-- in this scope, var ac = new AnimalsController() -->
-        <h2>{{ac.all.length}} Animals</h2>
+        <h2>{{ac.all.length}} Animals in the Zoo</h2>
         <p>Of the following species:</p>
         <ul>
-          <li ng-repeat="floop in ac.types">{{floop}}</li>
+          <li ng-repeat="floop in ac.types()">{{floop}}</li>
         </ul>
 
-        <article ng-repeat="animal in ac.all | orderBy:'species' | limitTo:5">
+        <p>Here are the first {{ac.previewLimit}}:</p>
+        <article ng-repeat="animal in ac.all | orderBy:'species' | limitTo:ac.previewLimit">
           <!-- ac.all.forEach(function(animal) { ... }) -->
           <h3 ng-class="{extinct: animal.type === 'Dinosaur', important: animal.species.length > 5}">
             {{animal.species}}
