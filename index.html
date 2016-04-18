@@ -14,12 +14,20 @@
         <p>The time is {{welcome.now | date:"hh:mm:ssa"}}</p>
       </header>
 
-      <main ng-controller="AnimalsController as animal">
-        <article>
-          <h2>
-            {{animal.name}}
+      <main ng-controller="AnimalsController as ac">
+        <!-- in this scope, var ac = new AnimalsController() -->
+        <h2>{{ac.all.length}} Animals</h2>
+        <p>Of the following species:</p>
+        <ul>
+          <li ng-repeat="floop in ac.types">{{floop}}</li>
+        </ul>
+
+        <article ng-repeat="animal in ac.all">
+          <!-- ac.all.forEach(function(animal) { ... }) -->
+          <h3>
+            {{animal.species}}
             <small>{{animal.type}}</small>
-          </h2>
+          </h3>
           <img ng-src="{{animal.picture}}" width="200">
         </article>
       </main>
