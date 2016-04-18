@@ -30,7 +30,7 @@
           <li ng-repeat="floop in ac.types">{{floop}}</li>
         </ul>
 
-        <article ng-repeat="animal in ac.all">
+        <article ng-repeat="animal in ac.all | orderBy:'species' | limitTo:5">
           <!-- ac.all.forEach(function(animal) { ... }) -->
           <h3 ng-class="{extinct: animal.type === 'Dinosaur', important: animal.species.length > 5}">
             {{animal.species}}
