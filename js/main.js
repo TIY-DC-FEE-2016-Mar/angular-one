@@ -31,7 +31,24 @@
        { species: "Velociraptor", type: "Dinosaur", picture: "" }
      ];
 
-     this.previewLimit = 4;
+     this.previewLimit = 10;
+
+     this.isAnimalAwake = function isAnimalAwake(x) {
+       var now = new Date();
+       var isDay;
+
+       if (now.getHours() >= 8 && now.getHours() <= 20) {
+         isDay = true;
+       } else {
+         isDay = false;
+       }
+
+       if (x.type === 'Marsupial') {
+         return !isDay;
+       } else {
+         return isDay;
+       }
+     }
 
      this.types = function animalTypes() {
        var uniqueTypes = [];
